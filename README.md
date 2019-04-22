@@ -9,5 +9,4 @@ i.e.
 
 *config.template* must be changed to *config.go* with your own variables.
 
-
 In order to have different currencies to GBP and USD, you'll have to alter the fields of the structs *rates* and *currencyReverseRates*, as well as the string *urlRequest*, in *currencyRate.go*
