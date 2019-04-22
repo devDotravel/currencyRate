@@ -1,8 +1,8 @@
 package main
 
 import (
-	"currency/config"
-	"currency/utils"
+	"currencyRate/config"
+	"currencyRate/utils"
 	"encoding/json"
 	"io/ioutil"
 	"log"

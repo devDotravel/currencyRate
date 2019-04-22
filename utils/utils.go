@@ -1,13 +1,13 @@
 package utils
 
 import (
-	"currency/config"
+	"currencyRate/config"
 	"os"
 	"strings"
 )
 
+// SetDirectoryTree creates directory tree
 func SetDirectoryTree() {
-	// creates availability folder and parent output root folder
 	path := config.OutputPath
 	bits := strings.Split(path, "/")
 	appendedPath := ""
