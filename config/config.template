@@ -1,0 +1,20 @@
+package config
+
+import "io/ioutil"
+
+var projectRoot = __PROJECT_ROOT__ // change this to your project root
+
+// OutputPath path where output file sits in
+var OutputPath = "/var/utils"
+
+// OutputFilePath file where reverse conversion is going to be output to
+var OutputFilePath = OutputPath + "/currency.json"
+
+// APIURL may vary depending on pricing plan. Some allow https
+var APIURL = "http://data.fixer.io/api"
+
+// APIKEY reads API key from plain file
+var APIKEY, _ = ioutil.ReadFile(projectRoot + "/config/apiKey")
+
+// ConversionFee headroom added to conversion rate in order to compensate for potential losses
+var ConversionFee = __CONVERSION_FEE__ // i.e. 0.01
