@@ -48,8 +48,8 @@ func main() {
 
 	// new struct with reverse logic
 	reverseRates := currencyReverseRates{
-		GBP: math.Ceil(100*1/(currencyRates.Rates.GBP-config.ConversionFee)) / 100,
-		USD: math.Ceil(100*1/(currencyRates.Rates.USD-config.ConversionFee)) / 100,
+		GBP: (math.Ceil(100*1/(currencyRates.Rates.GBP)) / 100) + config.ConversionFee,
+		USD: (math.Ceil(100*1/(currencyRates.Rates.USD)) / 100) + config.ConversionFee,
 	}
 
 	// outputs to file
