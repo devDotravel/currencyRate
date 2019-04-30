@@ -4,10 +4,12 @@ import (
 	"currencyRate/config"
 	"currencyRate/utils"
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"math"
 	"net/http"
+	"strconv"
 )
 
 type currencyRatesResp struct {
@@ -46,10 +48,16 @@ func main() {
 	var currencyRates currencyRatesResp
 	json.Unmarshal(body, &currencyRates)
 
+	// math and formatting to get values of currencies in EUR
+	GBPinEURStr := fmt.Sprintf("%.2f", (math.Ceil(100*1/(currencyRates.Rates.GBP))/100)+config.ConversionFee)
+	GBPinEUR, _ := strconv.ParseFloat(GBPinEURStr, 2)
+	USDinEURStr := fmt.Sprintf("%.2f", (math.Ceil(100*1/(currencyRates.Rates.USD))/100)+config.ConversionFee)
+	USDinEUR, _ := strconv.ParseFloat(USDinEURStr, 2)
+
 	// new struct with reverse logic
 	reverseRates := currencyReverseRates{
-		GBP: (math.Ceil(100*1/(currencyRates.Rates.GBP)) / 100) + config.ConversionFee,
-		USD: (math.Ceil(100*1/(currencyRates.Rates.USD)) / 100) + config.ConversionFee,
+		GBP: GBPinEUR,
+		USD: USDinEUR,
 	}
 
 	// outputs to file
