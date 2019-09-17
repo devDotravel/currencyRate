@@ -23,17 +23,19 @@ type currencyRatesResp struct {
 type rates struct {
 	GBP float64
 	USD float64
+	AED float64
 }
 
 type currencyReverseRates struct {
 	GBP float64
 	USD float64
+	AED float64
 }
 
 func main() {
 	utils.SetDirectoryTree()
 
-	urlRequest := config.APIURL + "/latest?access_key=" + string(config.APIKEY) + "&symbols=GBP,USD"
+	urlRequest := config.APIURL + "/latest?access_key=" + string(config.APIKEY) + "&symbols=GBP,USD,AED"
 
 	// request and make a struct out of response
 	res, err := http.Get(urlRequest)
@@ -53,11 +55,14 @@ func main() {
 	GBPinEUR, _ := strconv.ParseFloat(GBPinEURStr, 2)
 	USDinEURStr := fmt.Sprintf("%.2f", (math.Ceil(100*1/(currencyRates.Rates.USD))/100)+config.ConversionFee)
 	USDinEUR, _ := strconv.ParseFloat(USDinEURStr, 2)
+	AEDinEURStr := fmt.Sprintf("%.2f", (math.Ceil(100*1/(currencyRates.Rates.AED))/100)+config.ConversionFee)
+	AEDinEUR, _ := strconv.ParseFloat(AEDinEURStr, 2)
 
 	// new struct with reverse logic
 	reverseRates := currencyReverseRates{
 		GBP: GBPinEUR,
 		USD: USDinEUR,
+		AED: AEDinEUR,
 	}
 
 	// outputs to file
