@@ -60,6 +60,7 @@ func main() {
 
 	// new struct with reverse logic
 	reverseRates := currencyReverseRates{
+		EUR: 1,
 		GBP: GBPinEUR,
 		USD: USDinEUR,
 		AED: AEDinEUR,
