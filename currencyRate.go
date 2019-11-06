@@ -21,12 +21,14 @@ type currencyRatesResp struct {
 }
 
 type rates struct {
+	EUR float64
 	GBP float64
 	USD float64
 	AED float64
 }
 
 type currencyReverseRates struct {
+	EUR float64
 	GBP float64
 	USD float64
 	AED float64
